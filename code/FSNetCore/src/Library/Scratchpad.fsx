@@ -27,5 +27,6 @@ let worldMap size =
   let rec createTiles location terrain =
     match location, terrain with
     | (l :: ls), (t :: ts) -> {location = l; terrain = t; city = None} :: (createTiles ls ts)
-    | _,_ -> []
+    | [],[] -> []
+    | _,_ -> failwith "error when creating tiles"
   createTiles locations terrain
