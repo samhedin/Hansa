@@ -1,5 +1,8 @@
 #load "Domain.fs"
+open WorldMap
 #load "WorldMap.fs"
+#load "Cities.fs"
+open Cities
 open Domain
 
 let randomTerrain howMany =
@@ -39,17 +42,20 @@ let worldMap size : WorldMap =
 let printMap (worldMap : WorldMap) =
   let rec print map =
     match map with
-    | (tile :: tiles) when tile.location.x = 0 && tile.city = None -> 
-      sprintf "\n[<No city>, %A, (%A,%A)]\t" tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
+    | (tile :: tiles) when tile.location.x = 0 && tile.city.IsNone -> 
+      sprintf "\n\n[%-12s %10A, (%A,%A)]\t\t" "<No city>," tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
 
     | (tile :: tiles) when tile.location.x = 0 -> 
-      sprintf "\n[%A, %A, (%A,%A)]\t" tile.city tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
+      let (Some c) = tile.city
+      sprintf "\n\n[%-12s %10A, (%A,%A)]\t\t" (c.name + ",") tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
 
     | (tile :: tiles) when tile.city = None -> 
-      sprintf "[<No city>, %A, (%A,%A)]\t" tile.terrain tile.location.x tile.location.y + (print tiles)
+      sprintf "[%-12s %10A, (%A,%A)]\t\t" "<No city>" tile.terrain tile.location.x tile.location.y + (print tiles)
 
-    | (tile :: tiles) -> sprintf "[%A, %A, (%A,%A)]\t" tile.city tile.terrain tile.location.x tile.location.y + (print tiles)
+    | (tile :: tiles) -> 
+      let (Some c) = tile.city
+      sprintf "[%-12s %10A (%A,%A)]\t\t" (c.name + ",") tile.terrain tile.location.x tile.location.y + (print tiles)
     | _ -> "\n\n"
-  "\n" + print worldMap
+  print worldMap
 
-let testPrint = printf "%A" (printMap (worldMap 3))
+Cities.addCities (worldMap 5) |> printMap
