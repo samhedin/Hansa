@@ -1,5 +1,4 @@
-#load "Domain.fs"
-#load "WorldMap.fs"
+module Cities
 open Domain
 open WorldMap
 
@@ -7,7 +6,6 @@ let cityNames = ["Antwerp"; "Amsterdam"; "Stockholm"; "Prague"; "Rothenburg"; "M
 
 let createCities =
   List.map (fun name' -> {name = name'; population = 10; production = 0; utility = 0; autarchy = 0; }) cityNames
-
 
 let addCities worldMap : WorldMap = 
   let cities = createCities

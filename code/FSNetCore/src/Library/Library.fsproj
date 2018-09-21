@@ -5,6 +5,7 @@
   <ItemGroup>
     <Compile Include="Domain.fs" />
     <Compile Include="WorldMap.fs" />
+    <Compile Include="Cities.fs" />
     <Compile Include="Library.fs" />
   </ItemGroup>
 </Project>

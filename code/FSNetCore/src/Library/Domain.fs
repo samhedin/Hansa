@@ -4,17 +4,13 @@ type Resource = Wheat | Fish | Iron | Silk
 type Terrain = Ocean | Land | Mountain | River | Forest
 type DifficultyMultiplier = double
 
-
-let cityNames = ["Antwerp"; "Amsterdam"; "Stockholm"; "Prague"; "Rothenburg"; "Mont Saint Michel"; "Edinburgh"; "Colmar"; "York"; "Siena"]
 type City = {
   name : string
   population : int
   production : int
   utility : int
-  resources : (Resource * DifficultyMultiplier) list
-  surroundingTerrain : (Terrain * Terrain * Terrain * Terrain)
+  autarchy : int
 }
-
 
 type League = City list
 
@@ -24,9 +20,7 @@ type Tile = {
   city : City option
 }
 
-type WorldMap = {
-  tiles : Tile list
-}
+type WorldMap = Tile list
 
 let resourceDifficulty terrain resource : DifficultyMultiplier =
   match terrain, resource with
