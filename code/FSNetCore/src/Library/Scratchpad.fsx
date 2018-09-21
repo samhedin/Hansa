@@ -22,7 +22,7 @@ let allLocations size = //The grid is expressed as tuples
     match pairs with
     | (p :: ps) -> {x = snd p; y = fst p} :: createLoc ps
     | [] -> []
-  createLoc (List.allPairs nums nums |> List.rev)
+  createLoc (List.allPairs nums nums |> List.sort)
 
 let worldMap size : WorldMap =
   let locations = allLocations size //A location is expressed in (x,y)
