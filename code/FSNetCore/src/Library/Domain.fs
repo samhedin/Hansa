@@ -14,8 +14,12 @@ type City = {
 
 type League = City list
 
+type Location = {
+  x : int
+  y : int
+}
 type Tile = {
-  location : (int * int)
+  location : Location
   terrain : Terrain
   city : City option
 }

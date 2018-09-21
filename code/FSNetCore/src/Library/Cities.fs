@@ -11,10 +11,12 @@ let addCities worldMap : WorldMap =
   let cities = createCities
   let rec add wm cities randNum =
     let rnd = System.Random()
-    let nextRand = rnd.Next(randNum)
-    match (wm: WorldMap), cities with
-    | (tile :: tiles), (c :: cs) when nextRand % 3 = 0 -> {tile with city = Some c} :: add tiles cs nextRand
-    | _, _ -> []
-  add (WorldMap.worldMap 5) cities 1
 
-let mapWithCities = addCities WorldMap.worldMap
+    let nextRand = rnd.Next(randNum)
+    match wm, cities with
+    | (tile :: tiles), (c :: cs) when nextRand % 5 = 0 && tile.terrain <> Terrain.Ocean -> {tile with city = Some c} :: add tiles cs nextRand
+    | (tile :: tiles), cs -> tile :: add tiles cs nextRand
+    | _, _ -> []
+  add worldMap cities 1
+
+let mapWithCities = addCities (WorldMap.worldMap 5)
