@@ -35,20 +35,28 @@ let worldMap size : WorldMap =
     | _,_ -> failwith "error when creating tiles"
   createTiles locations terrain
 
+let terrainAtLocation (worldMap: WorldMap) location =
+  let foundTile = List.find (fun tile -> tile.location = location ) worldMap
+  foundTile.terrain
+
+let sizeOfMap worldMap =
+  sqrt (double (List.length worldMap)) |> int
+
+
 let printMap (worldMap : WorldMap) =
   let rec print map =
     match map with
-    | (tile :: tiles) when tile.location.x = 0 && tile.city.IsNone -> 
+    | tile :: tiles when tile.location.x = 0 && tile.city.IsNone -> 
       sprintf "\n\n[%-12s %10A, (%A,%A)]\t\t" "<No city>," tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
 
-    | (tile :: tiles) when tile.location.x = 0 -> 
+    | tile :: tiles when tile.location.x = 0 -> 
       let (Some c) = tile.city
       sprintf "\n\n[%-12s %10A, (%A,%A)]\t\t" (c.name + ",") tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
 
-    | (tile :: tiles) when tile.city = None -> 
+    | tile :: tiles when tile.city = None -> 
       sprintf "[%-12s %10A, (%A,%A)]\t\t" "<No city>" tile.terrain tile.location.x tile.location.y + (print tiles)
 
-    | (tile :: tiles) -> 
+    | tile :: tiles -> 
       let (Some c) = tile.city
       sprintf "[%-12s %10A (%A,%A)]\t\t" (c.name + ",") tile.terrain tile.location.x tile.location.y + (print tiles)
     | _ -> "\n\n"

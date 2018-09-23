@@ -2,7 +2,6 @@ module Domain
 
 type Resource = Wheat | Fish | Iron | Silk 
 type Terrain = Ocean | Land | Mountain | River | Forest
-type DifficultyMultiplier = double
 
 type City = {
   name : string
@@ -10,6 +9,7 @@ type City = {
   production : int
   utility : int
   autarchy : int
+  surroundingTerrain: Terrain list
 }
 
 type League = City list
@@ -26,6 +26,7 @@ type Tile = {
 
 type WorldMap = Tile list
 
+type DifficultyMultiplier = double
 let resourceDifficulty terrain resource : DifficultyMultiplier =
   match terrain, resource with
   | Ocean, Fish -> 0.5
