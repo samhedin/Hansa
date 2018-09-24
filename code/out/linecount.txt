@@ -1,0 +1,42 @@
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2018-09-24 01:18:44
+count workspace : c:\Users\samhe\Documents\GitHub\Hansa\code
+total files : 30
+total code lines : 1933
+total comment lines : 28
+total blank lines : 154
+
+FSNetCore\FSNetCore.sln, code is 54, comment is 0, blank is 0.
+FSNetCore\src\App\App.fsproj, code is 12, comment is 0, blank is 4.
+FSNetCore\src\App\obj\App.fsproj.nuget.cache, code is 5, comment is 0, blank is 0.
+FSNetCore\src\App\obj\App.fsproj.nuget.g.props, code is 18, comment is 0, blank is 0.
+FSNetCore\src\App\obj\App.fsproj.nuget.g.targets, code is 10, comment is 0, blank is 0.
+FSNetCore\src\App\obj\App.fsproj.proj-info.targets, code is 209, comment is 0, blank is 40.
+FSNetCore\src\App\obj\Debug\netcoreapp2.1\App.AssemblyInfo.fs, code is 11, comment is 3, blank is 3.
+FSNetCore\src\App\obj\Debug\netcoreapp2.1\App.AssemblyInfoInputs.cache, code is 1, comment is 0, blank is 0.
+FSNetCore\src\App\obj\Debug\netcoreapp2.1\App.assets.cache, it is a binary file.
+FSNetCore\src\App\obj\Debug\netcoreapp2.1\App.fsprojAssemblyReference.cache, it is a binary file.
+FSNetCore\src\App\obj\fsac.cache, code is 2, comment is 0, blank is 0.
+FSNetCore\src\App\obj\project.assets.json, code is 840, comment is 0, blank is 13.
+FSNetCore\src\App\Program.fs, code is 7, comment is 2, blank is 2.
+FSNetCore\src\Library\City.fs, code is 1, comment is 0, blank is 1.
+FSNetCore\src\Library\CreateCities.fs, code is 60, comment is 13, blank is 20.
+FSNetCore\src\Library\Domain.fs, code is 37, comment is 0, blank is 7.
+FSNetCore\src\Library\Library.fs, code is 4, comment is 0, blank is 1.
+FSNetCore\src\Library\Library.fsproj, code is 12, comment is 0, blank is 0.
+FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.AssemblyInfo.fs, code is 11, comment is 3, blank is 3.
+FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.AssemblyInfoInputs.cache, code is 1, comment is 0, blank is 0.
+FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.assets.cache, it is a binary file.
+FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.fsprojAssemblyReference.cache, it is a binary file.
+FSNetCore\src\Library\obj\fsac.cache, code is 2, comment is 0, blank is 0.
+FSNetCore\src\Library\obj\Library.fsproj.nuget.cache, code is 5, comment is 0, blank is 0.
+FSNetCore\src\Library\obj\Library.fsproj.nuget.g.props, code is 15, comment is 0, blank is 0.
+FSNetCore\src\Library\obj\Library.fsproj.nuget.g.targets, code is 9, comment is 0, blank is 0.
+FSNetCore\src\Library\obj\Library.fsproj.proj-info.targets, code is 209, comment is 0, blank is 40.
+FSNetCore\src\Library\obj\project.assets.json, code is 339, comment is 0, blank is 8.
+FSNetCore\src\Library\Scratchpad.fsx, code is 7, comment is 2, blank is 2.
+FSNetCore\src\Library\WorldMap.fs, code is 52, comment is 5, blank is 10.
+===============================================================================

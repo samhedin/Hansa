@@ -9,4 +9,7 @@
     <Compile Include="City.fs" />
     <Compile Include="Library.fs" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FsRandom" Version="1.4.0.1" />
+  </ItemGroup>
 </Project>

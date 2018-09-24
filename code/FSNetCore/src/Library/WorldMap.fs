@@ -1,5 +1,6 @@
 module WorldMap
 open Domain
+
 //The world map consists of nxn tiles. Each tile has a terrain and optionally a city.
 let randomTerrain howMany =
   let max = 5 //Change this depending on the amount of possibilities in Terrain
@@ -15,6 +16,8 @@ let randomTerrain howMany =
   let numbers = List.init howMany (fun _ -> random.Next(max))
   List.map terrain numbers
 
+
+//allLocations generates all tuples from (0,0) to (n,n)
 let allLocations size = //The grid is expressed as tuples
   let nums = [0..size - 1]
   let rec createLoc pairs =
@@ -23,6 +26,8 @@ let allLocations size = //The grid is expressed as tuples
     | [] -> []
   createLoc (List.allPairs nums nums |> List.sort)
 
+
+//Creates a world map of the given size
 let worldMap size : WorldMap =
   let locations = allLocations size //A location is expressed in (x,y)
   let terrain = randomTerrain (size * size) //Need size^2 terrain tiles

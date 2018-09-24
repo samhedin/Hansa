@@ -1,11 +1,17 @@
 module CreateCities
 open Domain
 open WorldMap
+(*
+  
+*)
 
 let cityNames = ["Antwerp"; "Amsterdam"; "Stockholm"; "Prague"; "Rothenburg"; "Edinburgh"; "Colmar"; "York"; "Siena"]
 
 let createCities =
-  List.map (fun name' -> {name = name'; population = 10; production = 0; utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
+  let allDefaultResources =
+    let rp resource : Resource * ProductExport = resource, {production = 0; export = 0}
+    [rp Wheat; rp Fish; rp Iron; rp Silk]
+  List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
 
 let addCities worldMap : WorldMap = 
   let cities = createCities
@@ -64,12 +70,12 @@ let addSurroundingTerrainToCity (worldMap : WorldMap) tile =
 
 //We want to add all surrounding terrain of a city to the terrain list in that city.
 
-let hasCity tile =
-  match tile.city with
-  | Some city -> true
-  | None -> false
 
 let citiesWithTerrain (worldMap : WorldMap) : WorldMap =
+  let hasCity tile =
+    match tile.city with
+    | Some city -> true
+    | None -> false
   List.map (fun (tile: Tile) -> if hasCity tile then {tile with city = Some (addSurroundingTerrainToCity worldMap tile)} else tile) worldMap
   
 let printCityResources (worldMap : WorldMap): string =

@@ -55,6 +55,18 @@
           }
         }
       },
+      "FsRandom/1.4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "FSharp.Core": "4.3.4"
+        },
+        "compile": {
+          "lib/netstandard1.6/FsRandom.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/FsRandom.dll": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -139,6 +151,19 @@
         "lib/netstandard1.6/tr/FSharp.Core.resources.dll",
         "lib/netstandard1.6/zh-Hans/FSharp.Core.resources.dll",
         "lib/netstandard1.6/zh-Hant/FSharp.Core.resources.dll"
+      ]
+    },
+    "FsRandom/1.4.0.1": {
+      "sha512": "QP8rlIiijh3G/xjde0iXvVlMhLSVRUmDwk/iyLDZzyMav07I3u3GjFpHZtfVPoxOCsQTC/01sAxdvMym4c3Img==",
+      "type": "package",
+      "path": "fsrandom/1.4.0.1",
+      "files": [
+        "fsrandom.1.4.0.1.nupkg.sha512",
+        "fsrandom.nuspec",
+        "lib/net45/FsRandom.dll",
+        "lib/net45/FsRandom.xml",
+        "lib/netstandard1.6/FsRandom.dll",
+        "lib/netstandard1.6/FsRandom.xml"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -286,6 +311,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "FSharp.Core >= 4.3.4",
+      "FsRandom >= 1.4.0.1",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -328,6 +354,10 @@
           "FSharp.Core": {
             "target": "Package",
             "version": "[4.3.4, )"
+          },
+          "FsRandom": {
+            "target": "Package",
+            "version": "[1.4.0.1, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

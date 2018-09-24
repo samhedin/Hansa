@@ -1,0 +1,201 @@
+{
+    "extension": "linecount",
+    "version": "0.1.7",
+    "workspace": "c:\\Users\\samhe\\Documents\\GitHub\\Hansa\\code",
+    "linecount": [
+        {
+            "version": "0.1.7",
+            "counttime": "2018-09-24 01:18:44",
+            "filesum": 30,
+            "codesum": 1933,
+            "commentsum": 28,
+            "blanksum": 154,
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "FSNetCore\\FSNetCore.sln"
+                },
+                {
+                    "blank": 4,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\App.fsproj"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\obj\\App.fsproj.nuget.cache"
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\obj\\App.fsproj.nuget.g.props"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\obj\\App.fsproj.nuget.g.targets"
+                },
+                {
+                    "blank": 40,
+                    "code": 209,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\obj\\App.fsproj.proj-info.targets"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 3,
+                    "filename": "FSNetCore\\src\\App\\obj\\Debug\\netcoreapp2.1\\App.AssemblyInfo.fs"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\obj\\Debug\\netcoreapp2.1\\App.AssemblyInfoInputs.cache"
+                },
+                {
+                    "filename": "FSNetCore\\src\\App\\obj\\Debug\\netcoreapp2.1\\App.assets.cache",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "FSNetCore\\src\\App\\obj\\Debug\\netcoreapp2.1\\App.fsprojAssemblyReference.cache",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\obj\\fsac.cache"
+                },
+                {
+                    "blank": 13,
+                    "code": 840,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\App\\obj\\project.assets.json"
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 2,
+                    "filename": "FSNetCore\\src\\App\\Program.fs"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\City.fs"
+                },
+                {
+                    "blank": 20,
+                    "code": 60,
+                    "comment": 13,
+                    "filename": "FSNetCore\\src\\Library\\CreateCities.fs"
+                },
+                {
+                    "blank": 7,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\Domain.fs"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\Library.fs"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\Library.fsproj"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 3,
+                    "filename": "FSNetCore\\src\\Library\\obj\\Debug\\netstandard2.0\\Library.AssemblyInfo.fs"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\obj\\Debug\\netstandard2.0\\Library.AssemblyInfoInputs.cache"
+                },
+                {
+                    "filename": "FSNetCore\\src\\Library\\obj\\Debug\\netstandard2.0\\Library.assets.cache",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "FSNetCore\\src\\Library\\obj\\Debug\\netstandard2.0\\Library.fsprojAssemblyReference.cache",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\obj\\fsac.cache"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\obj\\Library.fsproj.nuget.cache"
+                },
+                {
+                    "blank": 0,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\obj\\Library.fsproj.nuget.g.props"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\obj\\Library.fsproj.nuget.g.targets"
+                },
+                {
+                    "blank": 40,
+                    "code": 209,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\obj\\Library.fsproj.proj-info.targets"
+                },
+                {
+                    "blank": 8,
+                    "code": 339,
+                    "comment": 0,
+                    "filename": "FSNetCore\\src\\Library\\obj\\project.assets.json"
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 2,
+                    "filename": "FSNetCore\\src\\Library\\Scratchpad.fsx"
+                },
+                {
+                    "blank": 10,
+                    "code": 52,
+                    "comment": 5,
+                    "filename": "FSNetCore\\src\\Library\\WorldMap.fs"
+                }
+            ]
+        }
+    ]
+}

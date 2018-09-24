@@ -3,10 +3,15 @@ module Domain
 type Resource = Wheat | Fish | Iron | Silk 
 type Terrain = Ocean | Land | Mountain | River | Forest
 
+type ProductExport = {
+  production : int
+  export : int
+}
+
 type City = {
   name : string
   population : int
-  production : int
+  production : seq<Resource * ProductExport>
   utility : int
   autarchy : int
   surroundingTerrain: Terrain list

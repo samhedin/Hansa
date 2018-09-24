@@ -1,0 +1,8 @@
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\bin\Debug\netstandard2.0\Library.deps.json
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\bin\Debug\netstandard2.0\Library.dll
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\bin\Debug\netstandard2.0\Library.pdb
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.fsprojAssemblyReference.cache
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.AssemblyInfoInputs.cache
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.AssemblyInfo.fs
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.dll
+C:\Users\samhe\Documents\GitHub\Hansa\code\FSNetCore\src\Library\obj\Debug\netstandard2.0\Library.pdb
