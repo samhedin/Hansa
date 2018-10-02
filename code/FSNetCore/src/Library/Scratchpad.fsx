@@ -14,5 +14,3 @@ let stockholm =
   {name = "stockholm"; population = 100; production = [Wheat, 10; Fish, 20;]; export = [Wheat, 5; Fish,10]; utility = 10; autarchy = 10; surroundingTerrain = []}
 
 let sample = WorldMap.worldMap 5 |> CreateCities.addCities |> printMap
-
-

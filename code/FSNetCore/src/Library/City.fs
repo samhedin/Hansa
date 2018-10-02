@@ -2,7 +2,7 @@ module City
 open System
 open Domain
 (*
-  For dealing with individual cities and managing their production and so on.
+  For dealing with individual cities and managing their production.
 *)
 
 let remainingLabor (city : City) =
@@ -27,25 +27,32 @@ let printCity (city : City) =
   printf "\n\n*Autarchy is the highest level of utility a city can achieve without trade\n"
 
 
-let configureCity (city : City) = 
-  printCity city
+let rec configureCity (city : City) = //Outer loop lets you input commands in sequence.
+  let configureCity' (city : City) = 
+    printCity city
 
-  let getUserInput = 
-    printf "\nSelect which resource you wish to change. Wheat = w, Fish = f, Iron = i, Silk = s\n"
-    let command = Console.ReadLine()
-    match command with
-    | "w" -> Wheat
-    | "f" -> Fish
-    | "i" -> Iron
-    | "s" -> Silk
-    | _ -> failwith "invalid command in getUserInput"
-  
-  let updateCityProductionForResource (city : City) (resource : Resource) (amount : int) =
-    let oldProduction = List.find (fun resourceProd -> fst resourceProd = resource) city.production
-    let newProduction = YearlySupply (resource, amount)
-    {city with production = newProduction :: (List.except [oldProduction] city.production)}
+    let getUserInput = 
+      printf "\nSelect which resource you wish to change. Wheat = w, Fish = f, Iron = i, Silk = s\n"
+      let command = Console.ReadLine()
+      match command with
+      | "w" -> Wheat
+      | "f" -> Fish
+      | "i" -> Iron
+      | "s" -> Silk
+      | _ -> failwith "invalid command in getUserInput"
+    
+    let updateCityProductionForResource (city : City) (resource : Resource) (amount : int) =
+      let oldProduction = List.find (fun resourceProd -> fst resourceProd = resource) city.production
+      let newProduction = YearlySupply (resource, amount)
+      {city with production = newProduction :: (List.except [oldProduction] city.production)}
 
-  let chosenResource = getUserInput
-  printf "\nHow many would you like to produce this year? (has to be <= unused labor) "
-  let amountToProduce = Console.ReadLine() |> int
-  updateCityProductionForResource city chosenResource amountToProduce
+    let chosenResource = getUserInput
+    printf "\nHow many %A would you like to produce this year? (has to be <= unused labor) " chosenResource
+    let amountToProduce = Console.ReadLine() |> int
+    updateCityProductionForResource city chosenResource amountToProduce
+
+  let newCity = configureCity' city
+  printf "Would you like to change something else?, y/n"
+  match Console.ReadLine() with
+  | "y" -> configureCity newCity
+  | "n" -> newCity
