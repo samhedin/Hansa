@@ -8,7 +8,7 @@ let createCities =
   let allDefaultResources =
     let rp resource : YearlySupply = YearlySupply (resource, 0)
     [rp Wheat; rp Fish; rp Iron; rp Silk]
-  List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = []; utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
+  List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = []; import = [];utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
 
 let addCities worldMap : WorldMap = 
   let cities = createCities

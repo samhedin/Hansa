@@ -10,6 +10,7 @@ type City = {
   population : int
   production : YearlySupply list
   export : YearlySupply list
+  import : YearlySupply list
   utility : int
   autarchy : int
   surroundingTerrain: Terrain list

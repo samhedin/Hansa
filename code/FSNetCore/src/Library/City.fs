@@ -5,30 +5,33 @@ open Domain
   For dealing with individual cities and managing their production.
 *)
 
-let remainingLabor (city : City) =
+
+let remainingLabor city =
   let totalProduction = List.fold (fun acc resourceProduction -> acc + (snd resourceProduction)) 0 city.production
   city.population - totalProduction
 
-let printCity (city : City) =
+let printCity city =
   let productionString (production : YearlySupply) =
     sprintf "\nresource: %-10A\nproduction: %A lp\n" (fst production) (snd production) 
   let exportString (export: YearlySupply) =
     sprintf "\nresource: %-10A\nexport: %A lp\n" (fst export) (snd export) 
+  let importString (import: YearlySupply) =
+    sprintf "\nresource: %-10A\nimport: %A lp\n" (fst import) (snd import) 
   let production = Seq.fold (fun acc product -> acc + productionString product) "" city.production |> string
   let export = Seq.fold (fun acc product -> acc + exportString product) "" city.export |> string
+  let import = Seq.fold (fun acc product -> acc + importString product) "" city.import |> string
 
   printf "\n\n=======%A=======\n" city.name
   printf "total population/labor points (lp): %A\nUnused labor: %A\ntotal utility: %A\nautarchy* line: %A\n\n" city.population (remainingLabor city) city.utility city.autarchy
-  printf "==Production of goods==\n"
-  printf "%A" production
-  printf "\n==Export of goods==\n"
-  printf "%A" export
+  printf "==Production of goods==\n%A" production
+  printf "\n==Export of goods==\n%A" export
+  printf "\n==Import of goods==\n%A" import
 
   printf "\n\n*Autarchy is the highest level of utility a city can achieve without trade\n"
 
 
-let rec configureCity (city : City) = //Outer loop lets you input commands in sequence.
-  let configureCity' (city : City) = 
+let rec configureCityProduction city = //Outer loop lets you input commands in sequence.
+  let configureCity' city = 
     printCity city
 
     let getUserInput = 
@@ -54,5 +57,5 @@ let rec configureCity (city : City) = //Outer loop lets you input commands in se
   let newCity = configureCity' city
   printf "Would you like to change something else?, y/n"
   match Console.ReadLine() with
-  | "y" -> configureCity newCity
+  | "y" -> configureCityProduction newCity
   | "n" -> newCity
