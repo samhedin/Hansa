@@ -5,7 +5,6 @@ open Domain
   For dealing with individual cities and managing their production.
 *)
 
-
 let remainingLabor city =
   let totalProduction = Map.fold (fun acc _ value -> value + acc) 0 city.production
   city.population - totalProduction
@@ -23,9 +22,8 @@ let printCity (city: City) =
   printf "\n\n*Autarchy is the highest level of utility a city can achieve without trade\n"
 
 
-
-
-(*let rec configureCityProduction city = //Outer loop lets you input commands in sequence.
+//Call this to let the user configure the production of their city the coming year. 
+let rec configureCityProduction city = //Outer loop lets you input commands in sequence.
   let configureCity' city = 
     printCity city
 
@@ -39,18 +37,16 @@ let printCity (city: City) =
       | "s" -> Silk
       | _ -> failwith "invalid command in getUserInput"
     
-    let updateCityProductionForResource (city : City) (resource : Resource) (amount : int) =
-      let oldProduction = List.find (fun resourceProd -> fst resourceProd = resource) city.production
-      let newProduction = YearlySupply (resource, amount)
-      {city with production = newProduction :: (List.except [oldProduction] city.production)}
+    let updateCityProductionForResource (city : City) (resource : Resource) (amount : int) = {city with production = city.production.Add(resource, amount)}
 
     let chosenResource = getUserInput
     printf "\nHow many %A would you like to produce this year? (has to be <= unused labor) " chosenResource
     let amountToProduce = Console.ReadLine() |> int
+
     updateCityProductionForResource city chosenResource amountToProduce
 
   let newCity = configureCity' city
   printf "Would you like to change something else?, y/n"
   match Console.ReadLine() with
   | "y" -> configureCityProduction newCity
-  | "n" -> newCity *)
+  | "n" -> newCity

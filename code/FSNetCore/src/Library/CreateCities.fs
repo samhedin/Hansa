@@ -4,13 +4,15 @@ open WorldMap
 
 let cityNames = ["Antwerp"; "Amsterdam"; "Stockholm"; "Prague"; "Rothenburg"; "Edinburgh"; "Colmar"; "York"; "Siena"]
 
-let createCities =
-  let allDefaultResources =
-    let rp resource = (resource, 0)
-    YearlySupply [rp Wheat; rp Fish; rp Iron; rp Silk]
-  List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply [];utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
 
-let addCities worldMap : WorldMap = 
+let addCities (worldMap: WorldMap) : WorldMap = 
+
+  let createCities =
+    let allDefaultResources =
+      let rp resource = (resource, 0)
+      YearlySupply [rp Wheat; rp Fish; rp Iron; rp Silk]
+    List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply [];utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
+
   let cities = createCities
   let rec add wm cities randNum =
     let rnd = System.Random()
@@ -70,7 +72,6 @@ let addSurroundingTerrainToCity (worldMap : WorldMap) tile =
 
 //We want to add all surrounding terrain of a city to the terrain list in that city.
 
-
 let citiesWithTerrain (worldMap : WorldMap) : WorldMap =
   let hasCity tile =
     match tile.city with
@@ -78,6 +79,7 @@ let citiesWithTerrain (worldMap : WorldMap) : WorldMap =
     | None -> false
   List.map (fun (tile: Tile) -> if hasCity tile then {tile with city = Some (addSurroundingTerrainToCity worldMap tile)} else tile) worldMap
   
+//What is thes method even doing?
 let printCityResources (worldMap : WorldMap): string =
   let rec printm wm acc =
     match wm with
