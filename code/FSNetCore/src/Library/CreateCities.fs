@@ -5,8 +5,6 @@ open WorldMap
 let cityNames = ["Antwerp"; "Amsterdam"; "Stockholm"; "Prague"; "Rothenburg"; "Edinburgh"; "Colmar"; "York"; "Siena"]
 
 
-
-
 //if the city is on the edge of the map, it is considered a neighbor to 
 //the city on the other side of the map. The location "wraps around"
 //Takes a tile since a city is an option and we need to use the tile location.
@@ -63,7 +61,7 @@ let addCities (worldMap: WorldMap) : WorldMap =
     let allDefaultResources =
       let rp resource = (resource, 0)
       YearlySupply [rp Wheat; rp Fish; rp Iron; rp Silk]
-    List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply []; total = YearlySupply [];utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
+    List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply []; total = YearlySupply []; utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
 
   let cities = createCities
   let rec add wm cities randNum =
@@ -79,7 +77,7 @@ let addCities (worldMap: WorldMap) : WorldMap =
 
     | _, _ -> []
   add worldMap cities 1 |> citiesWithTerrain 
-  
+
 //What is thes method even doing?
 let printCityResources (worldMap : WorldMap): string =
   let rec printm wm acc =

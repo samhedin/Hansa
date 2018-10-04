@@ -14,4 +14,4 @@ let stockholm =
 
 let sampleMap = WorldMap.worldMap 5
 
-let sample = WorldMap.worldMap 5 |> CreateCities.addCities |> printMap
+let sample = WorldMap.worldMap 5 |> CreateCities.addCities

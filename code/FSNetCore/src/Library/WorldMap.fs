@@ -67,3 +67,10 @@ let printMap (worldMap : WorldMap) =
       sprintf "[%-12s %10A (%A,%A)]\t\t" (c.name + ",") tile.terrain tile.location.x tile.location.y + (print tiles)
     | _ -> "\n\n"
   print worldMap
+
+let getCity (worldMap : WorldMap) (cityName : string) =
+  let compareName state tile =
+    match tile.city with
+    | None -> state
+    | Some city -> if city.name = cityName then Some city else state
+  List.fold compareName None worldMap
