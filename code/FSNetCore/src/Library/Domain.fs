@@ -7,6 +7,7 @@ type YearlySupply = Map<Resource, int>
 type City = {
   name : string
   population : int
+  total : YearlySupply
   production : YearlySupply
   export : YearlySupply
   import : YearlySupply

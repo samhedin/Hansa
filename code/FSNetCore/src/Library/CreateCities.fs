@@ -5,33 +5,12 @@ open WorldMap
 let cityNames = ["Antwerp"; "Amsterdam"; "Stockholm"; "Prague"; "Rothenburg"; "Edinburgh"; "Colmar"; "York"; "Siena"]
 
 
-let addCities (worldMap: WorldMap) : WorldMap = 
-
-  let createCities =
-    let allDefaultResources =
-      let rp resource = (resource, 0)
-      YearlySupply [rp Wheat; rp Fish; rp Iron; rp Silk]
-    List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply [];utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
-
-  let cities = createCities
-  let rec add wm cities randNum =
-    let rnd = System.Random()
-    let nextRand = rnd.Next(randNum)
-
-    match wm, cities with
-    | (tile :: tiles), (c :: cs) when nextRand % 5 = 0 && tile.terrain <> Terrain.Ocean && tile.terrain <> Terrain.River -> 
-      {tile with city = Some c} :: add tiles cs nextRand
-
-    | (tile :: tiles), cs -> 
-      tile :: add tiles cs nextRand
-
-    | _, _ -> []
-  add worldMap cities 1
 
 
 //if the city is on the edge of the map, it is considered a neighbor to 
 //the city on the other side of the map. The location "wraps around"
 //Takes a tile since a city is an option and we need to use the tile location.
+//This method should only be called using citiesWithTerrain
 let addSurroundingTerrainToCity (worldMap : WorldMap) tile =
   let sizeOfMap = WorldMap.sizeOfMap worldMap - 1 //indexes start at 0 LMAO xD
   let terrainAtLoc = WorldMap.terrainAtLocation worldMap
@@ -71,13 +50,35 @@ let addSurroundingTerrainToCity (worldMap : WorldMap) tile =
       {city with surroundingTerrain = [terrainAtLoc {x = x - 1; y = y}; terrainAtLoc {x = x + 1; y = y}; terrainAtLoc {x = x; y = y - 1}; terrainAtLoc {x = x; y = 0}]}
 
 //We want to add all surrounding terrain of a city to the terrain list in that city.
-
 let citiesWithTerrain (worldMap : WorldMap) : WorldMap =
   let hasCity tile =
     match tile.city with
     | Some _ -> true
     | None -> false
   List.map (fun (tile: Tile) -> if hasCity tile then {tile with city = Some (addSurroundingTerrainToCity worldMap tile)} else tile) worldMap
+ 
+let addCities (worldMap: WorldMap) : WorldMap = 
+
+  let createCities =
+    let allDefaultResources =
+      let rp resource = (resource, 0)
+      YearlySupply [rp Wheat; rp Fish; rp Iron; rp Silk]
+    List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply []; total = YearlySupply [];utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
+
+  let cities = createCities
+  let rec add wm cities randNum =
+    let rnd = System.Random()
+    let nextRand = rnd.Next(randNum)
+
+    match wm, cities with
+    | (tile :: tiles), (c :: cs) when nextRand % 5 = 0 && tile.terrain <> Terrain.Ocean && tile.terrain <> Terrain.River -> 
+      {tile with city = Some c} :: add tiles cs nextRand
+
+    | (tile :: tiles), cs -> 
+      tile :: add tiles cs nextRand
+
+    | _, _ -> []
+  add worldMap cities 1 |> citiesWithTerrain 
   
 //What is thes method even doing?
 let printCityResources (worldMap : WorldMap): string =
