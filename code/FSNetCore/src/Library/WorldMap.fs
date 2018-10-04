@@ -74,3 +74,16 @@ let getCity (worldMap : WorldMap) (cityName : string) =
     | None -> state
     | Some city -> if city.name = cityName then Some city else state
   List.fold compareName None worldMap
+
+let setCity (worldMap : WorldMap) (city : City) : WorldMap =
+  let compareCity tile =
+    match tile.city with
+    | Some c -> 
+     if c.name = city.name then 
+      printf "\nFOUND CITY\n" |> ignore
+      {tile with city = Some city} 
+     else 
+      printf "city: %A didn't match provided city %A\n" c.name city.name
+      tile
+    | None -> tile
+  List.map compareCity worldMap

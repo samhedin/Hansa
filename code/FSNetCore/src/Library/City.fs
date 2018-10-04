@@ -66,7 +66,7 @@ let rec configureCityProduction city = //Outer loop lets you input commands in s
     updateCityProductionForResource city chosenResource amountToProduce |> calcTotalSupply
 
   let newCity = configureCity' (calcTotalSupply city)
-  printf "Would you like to change something else?, y/n"
+  printf "Would you like to change something else?, y/n "
   match Console.ReadLine() with
   | "y" -> configureCityProduction newCity
   | "n" -> newCity
