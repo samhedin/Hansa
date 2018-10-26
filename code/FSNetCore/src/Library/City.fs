@@ -1,9 +1,7 @@
 module City
 open System
 open Domain
-(*
-  For dealing with individual cities and managing their production.
-*)
+//For dealing with individual cities and managing their production.
 
 let remainingLabor city =
   let totalProduction = Map.fold (fun acc _ value -> value + acc) 0 city.production
@@ -15,6 +13,7 @@ let calcTotalSupply (city : City) : City =
   let addVals _ (v : int) (v' : int) = v + v'
   let subVals _ (v : int) (v' : int) = v - v'
   
+  //Merges the hashmap and uses decide funciton in case of collision.
   let unionWith (decide : Resource -> int -> int -> int) (m1: YearlySupply) (m2: YearlySupply) =
     let add m k v1 =
         let v = match Map.tryFind k m with
@@ -32,7 +31,10 @@ let printCity (city: City) =
   let removeMapFromString (str:string) = str.Replace("map","") //Otherwise the string will be 'map [(Wheat, 10);...]' instead of '[(Wheat, 10);...]'
 
   printf "\n\n=======%A=======\n" city.name
-  printf "total population/labor points (lp): %A\nUnused labor: %A\ntotal utility: %A\nautarchy* line: %A\n\n" city.population (remainingLabor city) city.utility city.autarchy
+  printf "total population/labor points (lp): %A\nUnused labor: %A\nautarchy* line: %A\n\n" city.population (remainingLabor city) city.autarchy
+
+  printf "\n\n=======Utility=======\n"
+  (sprintf "%A" city.utility) |> removeMapFromString |> printf "%A\n"
 
   (sprintf "==Total supply of goods==\n%A\n" city.total) |> removeMapFromString |> printf "%A"
   (sprintf "==Production of goods==\n%A\n" city.production) |> removeMapFromString |> printf "%A"
@@ -44,8 +46,8 @@ let printCity (city: City) =
 
 //Call this to let the user configure the production of their city the coming year. 
 let rec configureCityProduction city = //Outer loop lets you input commands in sequence.
-  let configureCity' city = 
-    printCity city
+  let configureCity' city =
+    printCity city |> ignore
 
     let getUserInput = 
       printf "\nSelect which resource you wish to change. Wheat = w, Fish = f, Iron = i, Silk = s\n"
@@ -70,14 +72,5 @@ let rec configureCityProduction city = //Outer loop lets you input commands in s
   match Console.ReadLine() with
   | "y" -> configureCityProduction newCity
   | "n" -> newCity
+  | _  -> failwith "command not found"
 
-
-// The value of another unit depending on the ratio of resource/population
-// 1 < resource/population very low value
-// 0.8 < resource/population < 1 low value
-// 0.5 < resource/population < 0.8 medium/low value
-// 0.2 < resource/population < 0.5 high value
-// resource/production < 0.2 very high value
-let utilityFromResources (city : City) = //TODO
-  let utility = Map.fold (fun totalUtil _ amount -> totalUtil + double amount / double city.population) 0.0 city.total
-  (utility * 1000.0) |> double

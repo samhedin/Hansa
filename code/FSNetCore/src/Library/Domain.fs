@@ -2,7 +2,15 @@ module Domain
 
 type Resource = Wheat | Fish | Iron | Silk 
 type Terrain = Ocean | Land | Mountain | River | Forest
+
 type YearlySupply = Map<Resource, int>
+
+type Utility = {
+   utility : double
+   valueForNextUnit : double
+   }
+
+type UtilityMap = Map<Resource, Utility>
 
 type City = {
   name : string
@@ -11,7 +19,7 @@ type City = {
   production : YearlySupply
   export : YearlySupply
   import : YearlySupply
-  utility : int
+  utility : UtilityMap
   autarchy : int
   surroundingTerrain: Terrain list
 }
@@ -22,6 +30,7 @@ type Location = {
   x : int
   y : int
 }
+
 type Tile = {
   location : Location
   terrain : Terrain

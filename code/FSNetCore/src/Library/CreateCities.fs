@@ -2,6 +2,9 @@ module CreateCities
 open Domain
 open WorldMap
 
+//This file only deals with creating the cities at the beginning of the game. 
+//The methods here should not be called once the game has started.
+
 let cityNames = ["Antwerp"; "Amsterdam"; "Stockholm"; "Prague"; "Rothenburg"; "Edinburgh"; "Colmar"; "York"; "Siena"]
 
 
@@ -61,7 +64,7 @@ let addCities (worldMap: WorldMap) : WorldMap =
     let allDefaultResources =
       let rp resource = (resource, 0)
       YearlySupply [rp Wheat; rp Fish; rp Iron; rp Silk]
-    List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply []; total = YearlySupply []; utility = 0; autarchy = 0; surroundingTerrain = []}) cityNames
+    List.map (fun name' -> {name = name'; population = 10; production = allDefaultResources; export = YearlySupply []; import = YearlySupply []; total = YearlySupply []; utility = UtilityMap []; autarchy = 0; surroundingTerrain = []}) cityNames
 
   let cities = createCities
   let rec add wm cities randNum =

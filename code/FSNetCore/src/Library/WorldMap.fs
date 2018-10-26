@@ -1,8 +1,6 @@
 module WorldMap
 open Domain
 
-
-
 //allLocations generates all tuples from (0,0) to (n,n)
 let allLocations size = //The grid is expressed as tuples
   let nums = [0..size - 1]
@@ -26,6 +24,8 @@ let worldMap size : WorldMap =
       | 3 -> Terrain.Mountain
       | 4 -> Terrain.Ocean
       | 5 -> Terrain.River
+      | _ -> failwith "incorrect number in randomTerrain"
+
     let random = System.Random()
     let numbers = List.init howMany (fun _ -> random.Next(max))
     List.map terrain numbers
@@ -50,21 +50,22 @@ let sizeOfMap worldMap =
 
 
 let printMap (worldMap : WorldMap) =
+  let stringFormat = sprintf "\n\n[%-12s %10A, (%A,%A)]\t\t"
   let rec print map =
     match map with
     | tile :: tiles when tile.location.x = 0 && tile.city.IsNone -> 
-      sprintf "\n\n[%-12s %10A, (%A,%A)]\t\t" "<No city>," tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
+      stringFormat "<No city>," tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
 
     | tile :: tiles when tile.location.x = 0 -> 
       let (Some c) = tile.city
-      sprintf "\n\n[%-12s %10A, (%A,%A)]\t\t" (c.name + ",") tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
+      stringFormat (c.name + ",") tile.terrain (tile.location.x) (tile.location.y) + (print tiles)
 
     | tile :: tiles when tile.city = None -> 
-      sprintf "[%-12s %10A, (%A,%A)]\t\t" "<No city>" tile.terrain tile.location.x tile.location.y + (print tiles)
+      stringFormat "<No city>" tile.terrain tile.location.x tile.location.y + (print tiles)
 
     | tile :: tiles -> 
       let (Some c) = tile.city
-      sprintf "[%-12s %10A (%A,%A)]\t\t" (c.name + ",") tile.terrain tile.location.x tile.location.y + (print tiles)
+      stringFormat (c.name + ",") tile.terrain tile.location.x tile.location.y + (print tiles)
     | _ -> "\n\n"
   print worldMap
 
